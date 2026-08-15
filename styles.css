@@ -1,17 +1,9 @@
-:root{
-
-  
+:root{  
   /* -- palette: braised-short-rib editorial (wine / rust / parchment) -- */
-  --mybackground:       #F5EFE2;  /* page background, warm parchment          */
-  --paper-deep:  #ECE1CB;  /* card / panel background, one shade down  */
-  --ink:         #241C15;  /* primary text, near-black umber           */
-  --ink-soft:    #5C5245;  /* secondary text                           */
-  --wine:        #6E1E23;  /* primary accent — the braising liquid     */
-  --rust:        #B15522;  /* secondary accent — seared crust          */
-  --gold:        #B9932E;  /* hairline rules, small details            */
-  --sage:        #6E7857;  /* "done/checked" state                     */
-  --line:        rgba(36,28,21,0.14);
-
+  --background-color:       #F5EFE2;  /* page background, warm parchment          */
+  --text-color:         #241C15; 
+  
+ 
 
   /* -- type scale -- */
   --font-display: "Fraunces", Georgia, serif;
@@ -37,14 +29,12 @@
    ============================================================ */
 *, *::before, *::after{ box-sizing: border-box; }
 html{ scroll-behavior: smooth; }
+
 body{
   margin: 0;
-  background: var(--mybackground);
-  color: var(--ink);
+  background: var(--background-color);
+  color: var(--text-color);
   font-family: var(--font-body);
-  font-size: 16px;
-  line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
 }
 
 img{ 
@@ -57,17 +47,6 @@ a{ color: inherit; }
 
 /* subtle paper grain — a cheap but effective texture trick:
    a repeating radial-gradient at tiny scale reads as noise */
-body::before{
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.5;
-  background-size: 3px 3px;
-  mix-blend-mode: multiply;
-  opacity: 0.035;
-  z-index: 1;
-}
 
 /* ============================================================
    2. END
@@ -78,7 +57,7 @@ body::before{
   top: 0;
   z-index: 40;
   display: flex;
-  /* align-items: center; */
+  align-items: center;
   justify-content: space-between;
   padding: var(--space-2) var(--space-4);
   background: rgba(245, 239, 226, 0.88);
@@ -91,10 +70,10 @@ body::before{
   align-items: center;
   gap: 0.5em;
   background-color: transparent;
-  border: 1px solid var(--ink);
-  color: var(--ink);
+  border: 1px solid var(--text-color);
+  color: var(--text-color);
   font-family: var(--font-body);
-  font-weight: bold;
+  font-weight: 700;
   font-size: 0.7rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
@@ -105,12 +84,8 @@ body::before{
 }
 
 .print-button:hover{ 
-  background: var(--ink); color: var(--mybackground);
+  background: var(--text-color); color: var(--background-color);
 }
-/* .print-button:focus-visible, a:focus-visible, button:focus-visible, .check:focus-visible{
-  outline: 2px solid var(--rust);
-  outline-offset: 3px;
-} */
 
 .topbar .logo{
   font-family: var(--font-display);
@@ -119,24 +94,24 @@ body::before{
   letter-spacing: 0.05em;
 }
 
-.hero-section {
+.hero-section{
   position: relative;
-  min-width: 80vh;
+  min-height: 78vh;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
-  object-fit: cover;
+  background: linear-gradient(160deg, #3b1216 0%, #6e1e23 45%, #a3552a 100%);
 }
-
-.hero-image {
+.hero-image{
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  animation: hero-animation 22s ease-in-out infinite alternate;
+  /* MOTION: a slow, ambient Ken Burns drift on load. Small and
+     slow = "ambient", not "distracting". */
+  animation: hero-animation 20s ease-in-out infinite alternate;
 }
-
 @keyframes hero-animation{
   from{ transform: scale(1.04) translate(0,0); }
   to{   transform: scale(1.12) translate(-1%, -1%); }
@@ -144,13 +119,11 @@ body::before{
 
 .hero-content {
   position: relative;
-  z-index: 2;
-  width: 100%;
   padding: var(--space-5) var(--space-4) var(--space-4);
-  color: var(--mybackground);
+  color: var(--background-color);
 }
 
-.hero__eyebrow{
+.hero-name{
   color: #E9C79A;
   font-size: 0.75rem;
   font-weight: 700;
@@ -161,8 +134,43 @@ body::before{
   gap: 0.7em;
 }
 
-.wrap{
-  max-width: var(--max-w);
-  margin-inline: auto;
-  padding-inline: var(--space-4);
+.hero-content h1{
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-style: italic;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 1.03;
+  max-width: 14ch;
+  margin-block: var(--space-2);
+  animation: rise-in 1s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: 0.15s;
+}
+
+.hero-main-paragraph{
+  margin-bottom: 2em;
+  max-width: 52ch;
+  color: #EDE1D3;
+  animation: rise-in 1s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: 0.35s;
+}
+
+.hero_readthrough_backgroud{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(36,20,15,0.05) 0%, rgba(20,10,8,0.78) 88%);
+}
+
+.hero_name_tag{
+  font-size: 0.85rem;
+  color: #C9B79E;
+  display: flex;
+  gap: 1.2em;
+  flex-wrap: wrap;
+  animation: rise-in 1s cubic-bezier(.2,.8,.2,1) both;
+  animation-delay: 0.5s;
+}
+
+@keyframes rise-in{
+  from{ opacity: 0; transform: translateY(16px); }
+  to{   opacity: 1; transform: translateY(0); }
 }
