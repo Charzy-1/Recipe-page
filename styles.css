@@ -1,0 +1,81 @@
+:root{
+  /* -- palette: braised-short-rib editorial (wine / rust / parchment) -- */
+  --paper:       #F5EFE2;  /* page background, warm parchment          */
+  --paper-deep:  #ECE1CB;  /* card / panel background, one shade down  */
+  --ink:         #241C15;  /* primary text, near-black umber           */
+  --ink-soft:    #5C5245;  /* secondary text                           */
+  --wine:        #6E1E23;  /* primary accent — the braising liquid     */
+  --rust:        #B15522;  /* secondary accent — seared crust          */
+  --gold:        #B9932E;  /* hairline rules, small details            */
+  --sage:        #6E7857;  /* "done/checked" state                     */
+  --line:        rgba(36,28,21,0.14);
+
+  /* -- type scale -- */
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body:    "Libre Franklin", -apple-system, sans-serif;
+
+  /* -- spacing scale (multiples of 4px keep things aligned) -- */
+  --space-1: 0.4rem;
+  --space-2: 0.8rem;
+  --space-3: 1.6rem;
+  --space-4: 2.4rem;
+  --space-5: 4rem;
+  --space-6: 6rem;
+
+  --radius: 3px;
+  --max-w: 1180px;
+
+  /* set by JS as you scroll the steps list — see OBSERVER section */
+  --reduction: 0;
+}
+
+/* ============================================================
+   2. RESET — remove browser defaults so we start from zero.
+   ============================================================ */
+*, *::before, *::after{ box-sizing: border-box; }
+html{ scroll-behavior: smooth; }
+body{
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+img{ max-width: 100%; display: block; }
+ul, ol{ margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, p{ margin: 0; }
+a{ color: inherit; }
+
+/* subtle paper grain — a cheap but effective texture trick:
+   a repeating radial-gradient at tiny scale reads as noise */
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.5;
+  background-image: radial-gradient(var(--ink) 0.5px, transparent 0.5px);
+  background-size: 3px 3px;
+  mix-blend-mode: multiply;
+  opacity: 0.035;
+  z-index: 1;
+}
+
+/* ============================================================
+   2. END
+   ============================================================ */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-2) var(--space-4);
+  background: rgba(245, 239, 226, 0.88);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
