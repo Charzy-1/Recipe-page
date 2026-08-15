@@ -1,6 +1,8 @@
 :root{
+
+  
   /* -- palette: braised-short-rib editorial (wine / rust / parchment) -- */
-  --paper:       #F5EFE2;  /* page background, warm parchment          */
+  --mybackground:       #F5EFE2;  /* page background, warm parchment          */
   --paper-deep:  #ECE1CB;  /* card / panel background, one shade down  */
   --ink:         #241C15;  /* primary text, near-black umber           */
   --ink-soft:    #5C5245;  /* secondary text                           */
@@ -9,6 +11,7 @@
   --gold:        #B9932E;  /* hairline rules, small details            */
   --sage:        #6E7857;  /* "done/checked" state                     */
   --line:        rgba(36,28,21,0.14);
+
 
   /* -- type scale -- */
   --font-display: "Fraunces", Georgia, serif;
@@ -36,14 +39,18 @@
 html{ scroll-behavior: smooth; }
 body{
   margin: 0;
-  background: var(--paper);
+  background: var(--mybackground);
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
 }
-img{ max-width: 100%; display: block; }
+
+img{ 
+  max-width: 100%; display: block; 
+}
+
 ul, ol{ margin: 0; padding: 0; list-style: none; }
 h1, h2, h3, p{ margin: 0; }
 a{ color: inherit; }
@@ -56,7 +63,6 @@ body::before{
   inset: 0;
   pointer-events: none;
   opacity: 0.5;
-  background-image: radial-gradient(var(--ink) 0.5px, transparent 0.5px);
   background-size: 3px 3px;
   mix-blend-mode: multiply;
   opacity: 0.035;
@@ -72,10 +78,91 @@ body::before{
   top: 0;
   z-index: 40;
   display: flex;
-  align-items: center;
+  /* align-items: center; */
   justify-content: space-between;
   padding: var(--space-2) var(--space-4);
   background: rgba(245, 239, 226, 0.88);
   backdrop-filter: blur(8px);
   border-bottom: 1px solid var(--line);
+}
+
+.print-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  background-color: transparent;
+  border: 1px solid var(--ink);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-weight: bold;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.55em 1.1em;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.print-button:hover{ 
+  background: var(--ink); color: var(--mybackground);
+}
+/* .print-button:focus-visible, a:focus-visible, button:focus-visible, .check:focus-visible{
+  outline: 2px solid var(--rust);
+  outline-offset: 3px;
+} */
+
+.topbar .logo{
+  font-family: var(--font-display);
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+}
+
+.hero-section {
+  position: relative;
+  min-width: 80vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.hero-image {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: hero-animation 22s ease-in-out infinite alternate;
+}
+
+@keyframes hero-animation{
+  from{ transform: scale(1.04) translate(0,0); }
+  to{   transform: scale(1.12) translate(-1%, -1%); }
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: var(--space-5) var(--space-4) var(--space-4);
+  color: var(--mybackground);
+}
+
+.hero__eyebrow{
+  color: #E9C79A;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
+}
+
+.wrap{
+  max-width: var(--max-w);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
 }
