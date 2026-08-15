@@ -2,8 +2,10 @@
   /* -- palette: braised-short-rib editorial (wine / rust / parchment) -- */
   --background-color:       #F5EFE2;  /* page background, warm parchment          */
   --text-color:         #241C15; 
+  --line:        rgba(36,28,21,0.14);
+  --wine:        #6E1E23;  /* primary accent — the braising liquid     */
+  --ink-soft:    #5C5245;  /* secondary text      
   
- 
 
   /* -- type scale -- */
   --font-display: "Fraunces", Georgia, serif;
@@ -102,6 +104,7 @@ a{ color: inherit; }
   overflow: hidden;
   background: linear-gradient(160deg, #3b1216 0%, #6e1e23 45%, #a3552a 100%);
 }
+
 .hero-image{
   position: absolute;
   inset: 0;
@@ -173,4 +176,48 @@ a{ color: inherit; }
 @keyframes rise-in{
   from{ opacity: 0; transform: translateY(16px); }
   to{   opacity: 1; transform: translateY(0); }
+}
+
+.badges {
+  position: relative;
+  z-index: 3;
+  transform: translateY(-50%);
+}
+
+.badges__row{
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-2);
+}
+
+.badge {
+  background: var(--background-color);
+  padding: var(--space-2) var(--space-2);
+  text-align: center;
+  box-shadow: 0 14px 30px -14px rgba(36,20,15,0.35);
+  /* a tiny alternating rotation makes them feel hand-stamped
+     rather than machine-perfect — an intentional imperfection */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.badge:nth-child(odd){ transform: rotate(-1.1deg); }
+.badge:nth-child(even){ transform: rotate(1.1deg); }
+
+.badge:hover{ 
+  transform: translateY(-3px) rotate(3deg); box-shadow: 0 18px 34px -14px rgba(36,20,15,0.4); 
+}
+
+.badge__value{
+  font-family: var(--font-display);
+  font-size: 1.rem;
+  font-weight: 600;
+  color: var(--wine);
+  display: block;
+}
+
+.badge__label{
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
 }
