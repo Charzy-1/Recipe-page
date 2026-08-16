@@ -1,12 +1,13 @@
 :root{  
   /* -- palette: braised-short-rib editorial (wine / rust / parchment) -- */
   --background-color:       #F5EFE2;  /* page background, warm parchment          */
+  --paper-deep:  #ECE1CB; 
   --text-color:         #241C15; 
   --line:        rgba(36,28,21,0.14);
   --wine:        #6E1E23;  /* primary accent — the braising liquid     */
-  --ink-soft:    #5C5245;  /* secondary text      
-  
-
+  --ink-soft:    #5C5245;  
+  --rust:        #B15522;  
+    
   /* -- type scale -- */
   --font-display: "Fraunces", Georgia, serif;
   --font-body:    "Libre Franklin", -apple-system, sans-serif;
@@ -223,11 +224,12 @@ a{ color: inherit; }
 }
 
 .intro {
-  display: flex;
+  display: grid;
   gap: var(--space-5);
   border-bottom: 1px solid var(--line);
   padding-top: var(--space-6);
   padding-bottom: var(--space-5);
+  grid-template-columns: 1fr 1fr;
 }
 
 .wrap{
@@ -237,38 +239,81 @@ a{ color: inherit; }
 }
 
 .recipe-body {
-  display: flex;
-  gap: 1rem;
-  justify-content: space-between;
-}
-
-.ingredients {
-  max-width: 0 0 20%;
-  padding-right: var(--space-3);
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: var(--space-5)
 }
 
 .servings-note {
-  margin-top: 20px;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-3);
+  border-bottom: 1px dashed var(--line);
 }
 
-.step-container {
-  flex: 1;
+.ingredients {
+  position: sticky;
+  top: calc(var(--space-4) + 56px); /* clears the sticky topbar */
+  background: var(--paper-deep);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-4);
 }
 
-.step-body {
+.ingredients h2{
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: var(--space-1);
+}
+
+.ingredient{
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8em;
+  padding: 0.55em 0;
+  cursor: pointer;
+  border-bottom: 1px solid var(--line);
+}
+
+.small-circle {
+  height: 10px;
+  width: 20px;
+  background-color: var(--wine);
+}
+
+.step {
   display: grid;
-  grid-template-columns: 20px 2fr;
-  gap: 28px;
-  margin-top: 20px;
+  grid-template-columns: 3rem 1fr;
+  gap: var(--space-3);
+  padding-block: var(--space-4);
+  border-bottom: 1px solid var(--line);
 }
 
-.step-body h4 {
-  margin-top: 0;
+.step__num {
+  font-family: var(--font-display);
+  font-size: 1.9rem;
+  font-weight: 300;
+  color: var(--rust);
+  line-height: 1;
 }
 
 .step__time {
   display: block;
-  margin-top: 10px;
+  margin-top: 1rem;
   font-weight: 500;
 }
+
+.step-body h3 {
+  font-family: var(--font-body);
+  font-weight: 700;
+  font-size: 1rem;
+  margin-bottom: 0.4em;
+}
+
+h1, h2, h3, p {
+  margin: 0;
+}
+
 
