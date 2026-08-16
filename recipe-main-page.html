@@ -17,7 +17,7 @@
   </header>
 
   <!-- Hero Section  -->
-   <main>
+  <main>
     <section class="hero-section">
       <img class="hero-image"
       src="https://images.unsplash.com/photo-1600891964092-4316c288032e?q=80&w=1800&auto=format&fit=crop" alt="A bowl of chicken and chips">
@@ -51,6 +51,42 @@
       <p class="reveal">This is the recipe I make when the weather turns and I want the whole house to smell like it for the rest of the day. Bone-in short ribs are seared hard for real crust, then braised in red wine with a classic soffritto until the meat needs nothing more than a fork to fall apart.</p>
       <p class="reveal">Don't rush the braise — the long, slow hours in the oven are doing all the work, breaking down connective tissue into silky gelatin that turns the sauce glossy on its own, no thickener required.</p>
     </section>
+
+    <!-- ============================================================
+     RECIPE BODY — ingredients (sticky) + steps (scrolling)
+     ============================================================ -->
+    <section class="wrap recipe-body">
+
+        <!-- ingredient -->
+        <aside class="ingredients">
+          <h2>Ingredients</h2>
+          <p class="servings-note">
+            Makes 4-6 servings. Tap an item to check it off your list.
+          </p>
+          <ul id="ingredient-list">
+            <li class="ingredient">
+              <button class="check" aria-label="Check off"></button><span class="ingredient__text">
+              <span class="ingredient__amt">3 lbs</span> bone-in beef short ribs</span>
+            </li>
+            <li class="ingredient">
+              <button class="check" aria-label="Check off"></button>
+              <span class="ingredient__text">Kosher salt &amp; black pepper</span></li>
+          </ul>
+        </aside>
+
+          <!-- Steps container -->
+        <section class="step-container">
+            <h2>Preparation</h2>
+            <div class="step-body">
+              <h3 >01</h3>
+              <div class="step_body_child">
+                <h4>Sear the Short Ribs</h4>
+                <p>Pat the short ribs dry and season generously with salt and pepper. Heat the olive oil in a Dutch oven over medium-high until shimmering, then sear the ribs on all sides until deeply browned, about 8-10 minutes total. Work in batches if needed — a crowded pot steams instead of searing. Transfer to a plate.</p>
+                <span class="step__time">≈ 12 min</span>
+              </div>
+            </div>
+        </section>
+     </section>
   </main>
 </body>
 </html>
