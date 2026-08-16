@@ -7,6 +7,7 @@
   --wine:        #6E1E23;  /* primary accent — the braising liquid     */
   --ink-soft:    #5C5245;  
   --rust:        #B15522;  
+  --ink:         #241C15; /* note backgroud colour */
     
   /* -- type scale -- */
   --font-display: "Fraunces", Georgia, serif;
@@ -241,7 +242,8 @@ a{ color: inherit; }
 .recipe-body {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: var(--space-5)
+  gap: var(--space-5);
+  padding-block: var(--space-6);
 }
 
 .servings-note {
@@ -316,4 +318,41 @@ h1, h2, h3, p {
   margin: 0;
 }
 
+.notes {
+  background: var(--ink);
+  color: var(--background-color);
+  padding-block: var(--space-6);
+}
 
+.note-container{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+.notes h2{
+  font-family: var(--font-display);
+  font-style: italic;
+  font-weight: 500;
+  font-size: 1.8rem;
+  margin-bottom: var(--space-3);
+}
+
+.card-line {
+  height: 2px;
+  background-color: #9f6c2a;
+  margin-bottom: var(--space-3);
+}
+
+.note-cards h3 {
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #E9C79A;
+  margin-bottom: 0.6em;
+}
+
+.note_card_paragraph {
+  font-size: 0.92rem;
+  color: #D9CFC0;
+}
