@@ -255,7 +255,6 @@ a{ color: inherit; }
 }
 
 .ingredients {
-  position: sticky;
   top: calc(var(--space-4) + 56px); /* clears the sticky topbar */
   background: var(--paper-deep);
   border: 1px solid var(--line);
@@ -363,3 +362,26 @@ footer {
   font-size: 0.75rem;
   color: var(--ink-soft);
 }
+
+@media (max-width: 900px) {
+  .note-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .note-container, .intro {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .recipe-body {
+    grid-template-columns: 1fr;
+  }
+  .badges__row{ grid-template-columns: repeat(2, 1fr); }
+  .hero-content {
+    margin-bottom: var(--space-6);
+  }
+}
+
